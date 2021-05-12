@@ -5,22 +5,22 @@ Created a webpage that allows you to search for information regarding movies and
 ### Tech Stack:
 #### Server-Side:  
 JavaScript  
-NodeJS
-ExpressJS
+NodeJS  
+ExpressJS  
 Fetch API  
 CORS Module  
 GAE - Google App Engine
   
 #### Client-Side:  
 JavaScript  
-AngularJS 
-Bootstrap
-AJAX (via Angular)
+AngularJS  
+Bootstrap  
+AJAX (via Angular)  
 Local Storage API  
   
 ### Webpage Link & Demo:
 #### Webpage:
 https://sk-wt-hws.wl.r.appspot.com/
 #### Demo: 
-Desktop version: https://www.youtube.com/watch?v=HjlNHsMEXAg
+Desktop version: https://www.youtube.com/watch?v=HjlNHsMEXAg  
 Phone/tablet version: https://www.youtube.com/watch?v=ISLgbDdQ17U
