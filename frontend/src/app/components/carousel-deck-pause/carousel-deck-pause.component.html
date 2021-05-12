@@ -1,0 +1,43 @@
+<h2>{{heading}}</h2>
+<ngb-carousel #carousel *ngIf="!isMobile" [interval]="0">
+    <ng-template ngbSlide *ngFor="let item of imageData; index as i">
+        <div class="card-deck">
+            <div class="card card-desktop" *ngFor="let image of item">
+                <a [href]="itemSelected(image, image.type)">
+                    <div *ngIf="image.poster_path">
+                        <img class="cardimg" [src]="'https://image.tmdb.org/t/p/w500' + image.poster_path" alt="My image {{i + 1}} description">
+                    </div>
+                    <div *ngIf="image.title">
+                        <div class="overlay">{{image.title}}</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </ng-template>
+</ngb-carousel>
+
+<!-- Mobile version -->
+<ngb-carousel #carousel *ngIf="isMobile" [interval]="0" [showNavigationIndicators]="!isMobile">
+    <ng-container *ngFor="let item of imageData; index as i">
+        <ng-container *ngFor="let image of item">
+            <ng-container *ngIf="image.poster_path">
+                <ng-template ngbSlide>
+                    <div class="card-deck">
+                        <div class="card card-mobile">
+                            <a [href]="itemSelected(image, image.type)">
+                                <div *ngIf="image.poster_path">
+                                    <img class="cardimg" [src]="'https://image.tmdb.org/t/p/w500' + image.poster_path" alt="My image {{i + 1}} description">
+                                </div>
+                                <div *ngIf="image.title">
+                                    <div class="overlay">{{image.title}}</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </ng-template>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</ngb-carousel>
+
+<!-- popularMovies.results -->

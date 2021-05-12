@@ -1,0 +1,41 @@
+img {
+    width: 100%;
+}
+
+.clip {
+    max-height: 400px;
+    overflow: hidden;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    background-image: linear-gradient(to bottom, transparent, black 40%);
+    color: #f1f1f1;
+    width: 100%;
+    transition: .2s ease;
+    opacity:0;
+    color: white;
+    font-size: 15px;
+    padding: 5%;
+    padding-left: 15%;
+    padding-top: 8%;
+}
+
+.overlay-mobile .overlay {
+    opacity: 1;
+}
+
+.clip:hover .overlay {
+    opacity: 1;
+  }
+
+  .clip:hover {
+    transform: scale(1.1);
+}
+
+.clip {
+    position: relative;
+}
+
+/* .mobile-carousel ::ng-deep .carousel-indicators li { visibility: hidden; } */

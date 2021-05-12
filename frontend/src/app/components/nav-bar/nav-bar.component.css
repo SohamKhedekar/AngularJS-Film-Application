@@ -1,0 +1,26 @@
+.nav-color {
+    background-color: #070729;
+}
+
+.navbar-brand, .navbar-brand:hover, .active>.navbar-brand {
+    color: white;
+}
+
+.navbar-light .navbar-nav .active>.nav-link {
+    color: white;
+}
+
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav {
+    color: grey;
+}
+
+.navbar {
+    padding-left: 4%;
+    padding-right: 4%;
+    margin-bottom: 2%;
+}
+
+.navbar-light .navbar-toggler {
+    color: rgb(76, 87, 100);
+    border-color: #1d1d35;
+}

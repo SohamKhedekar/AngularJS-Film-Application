@@ -1,0 +1,27 @@
+<div class="carousel_style" *ngIf="!isMobile">
+    <app-carousel-pause></app-carousel-pause>
+</div>
+<div class="carousel_style_mobile" *ngIf="isMobile">
+    <app-carousel-pause></app-carousel-pause>
+</div>
+<div *ngIf="isContinueWatching">
+    <app-carousel-deck-pause deckType="continueWatching"></app-carousel-deck-pause>
+</div>
+<div>
+    <app-carousel-deck-pause deckType="popularMovies" mediaType="movie"></app-carousel-deck-pause>
+</div>
+<div>
+    <app-carousel-deck-pause deckType="topRatedMovies" mediaType="movie"></app-carousel-deck-pause>
+</div>
+<div>
+    <app-carousel-deck-pause deckType="trendingMovies" mediaType="movie"></app-carousel-deck-pause>
+</div>
+<div>
+    <app-carousel-deck-pause deckType="popularTVShows" mediaType="tv"></app-carousel-deck-pause>
+</div>
+<div>
+    <app-carousel-deck-pause deckType="topRatedTVShows" mediaType="tv"></app-carousel-deck-pause>
+</div>
+<div style="padding-bottom: 5%;">
+    <app-carousel-deck-pause deckType="trendingTVShows" mediaType="tv"></app-carousel-deck-pause>
+</div>

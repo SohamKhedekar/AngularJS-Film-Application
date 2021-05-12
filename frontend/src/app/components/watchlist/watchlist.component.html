@@ -1,0 +1,35 @@
+<span *ngIf="isWatchList"><h2>My WatchList</h2></span>
+<span *ngIf="!isWatchList"><h1>No items found in Watchlist.</h1></span>
+
+<div *ngIf="!isMobile">
+    <div class="card-deck" *ngFor="let item of final_data; index as i">
+        <div class="card card-desktop" *ngFor="let image of item">
+            <a [href]="itemSelected(image, image.type)">
+                <div *ngIf="image.poster_path">
+                    <img class="cardimg" [src]="'https://image.tmdb.org/t/p/w500' + image.poster_path" alt="My image {{i + 1}} description">
+                </div>
+                <div *ngIf="image.title">
+                    <div class="overlay">{{image.title}}</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div *ngIf="isMobile">
+    <div *ngFor="let item of final_data; index as i" style="margin-top: 15%;">
+        <div *ngFor="let image of item">
+            <div class="card-deck">
+                <div class="card card-mobile">
+                    <a [href]="itemSelected(image, image.type)">
+                        <div *ngIf="image.poster_path">
+                            <img class="cardimg" [src]="'https://image.tmdb.org/t/p/w500' + image.poster_path" alt="My image {{i + 1}} description">
+                        </div>
+                        <div *ngIf="image.title">
+                            <div class="overlay">{{image.title}}</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

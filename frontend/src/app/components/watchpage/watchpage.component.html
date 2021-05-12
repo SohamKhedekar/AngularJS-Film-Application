@@ -1,0 +1,334 @@
+<div class="row row_main" style="margin-top: 3%;" *ngIf="!isMobile">
+    <div class="col-sm-8 embed-responsive embed-responsive-16by9" style="height: fit-content;">
+        <youtube-player [videoId]=videoData.key></youtube-player>
+    </div>
+    <div class="col-sm-4" style="padding-left: 4%; padding-right: 0;">
+        <h1 class="font-weight-light">{{details.title}}</h1>
+        <div *ngIf="details.tagline">
+            <h5 class="font-italic font-weight-light">{{details.tagline}}</h5>
+        </div>
+        <div *ngIf="details.release_date" style="padding-top: 5%;">
+            <h5 class="font-weight-light">{{details.release_date}} | &#9733; {{details.vote_average}} | {{details.runtime}}</h5>
+        </div>
+        <div *ngIf="details.genres" style="padding-top: 3%;">
+            <p class="font-weight-light" style="margin-bottom: 0;"><small>Genres:</small><span class="subtext"> {{details.genres}}</span></p>
+        </div>
+        <div *ngIf="details.spoken_languages">
+            <p class="font-weight-light"><small>Spoken Languages:</small><span class="subtext"> {{details.spoken_languages}}</span></p>
+        </div>
+        <p style="margin-bottom: 5%;">
+          <button class="btn btn-primary" (click)="changeSuccessMessage()">{{alertButtonState}}</button>
+        </p>
+        <ngb-alert #selfClosingAlert *ngIf="successMessage" [type]="type" (closed)="successMessage = ''" style="font-size: 14px;">{{ successMessage }}
+        </ngb-alert>
+    </div>
+</div>
+<div class="row_main_mobile" style="margin-top: 3%;" *ngIf="isMobile">
+    <div class="embed-responsive embed-responsive-16by9" style="height: fit-content;">
+        <youtube-player [videoId]=videoData.key></youtube-player>
+    </div>
+    <div style="padding-top: 4%;">
+        <h1 class="font-weight-light">{{details.title}}</h1>
+        <div *ngIf="details.tagline">
+            <h5 class="font-italic font-weight-light">{{details.tagline}}</h5>
+        </div>
+        <div *ngIf="details.release_date" style="padding-top: 5%;">
+            <h5 class="font-weight-light">{{details.release_date}} | &#9733; {{details.vote_average}} | {{details.runtime}}</h5>
+        </div>
+        <div *ngIf="details.genres">
+            <p class="font-weight-light" style="margin-bottom: 0;"><small>Genres:</small><span class="subtext"> {{details.genres}}</span></p>
+        </div>
+        <div *ngIf="details.spoken_languages">
+            <p class="font-weight-light"><small>Spoken Languages:</small><span class="subtext"> {{details.spoken_languages}}</span></p>
+        </div>
+        <p style="margin-bottom: 5%;">
+          <button class="btn btn-primary" (click)="changeSuccessMessage()">{{alertButtonState}}</button>
+        </p>
+        <ngb-alert #selfClosingAlert *ngIf="successMessage" [type]="type" (closed)="successMessage = ''" style="font-size: 14px;">{{ successMessage }}
+        </ngb-alert>
+    </div>
+</div>
+
+<div class="row row_main description" *ngIf="!isMobile">
+    <div *ngIf="details.overview">
+        <h5 class="font-weight-normal" style="margin-bottom: 0.5rem;">Description</h5>
+        <p><span class="subtext">{{details.overview}}</span></p>
+    </div>
+</div>
+<div class="row_main_mobile" *ngIf="isMobile">
+    <div *ngIf="details.overview">
+        <h5 class="font-weight-normal" style="margin-bottom: 0.5rem;">Description</h5>
+        <p><span class="subtext">{{details.overview}}</span></p>
+    </div>
+</div>
+
+<div class="row_main description" *ngIf="!isMobile">
+    <h5 class="font-weight-normal" style="margin-bottom: 0.5rem;">Share</h5>
+    <div class="row" style="padding-left: 15px;">
+        <a target="_blank" class="twitter-share-button" [href]="getTweet()">
+            <span style="color: #1da1f2; padding-left: 1%;"><fa-icon [icon]="faTwitter" size="2x"></fa-icon></span>
+        </a>
+        <div style="padding-left: 5px;" class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" [href]="getFB()" class="fb-xfbml-parse-ignore">
+            <span style="color: #1e6ace; padding-left: 1%;"><fa-icon [icon]="faFacebookSquare" size="2x"></fa-icon></span>
+        </a></div>
+    </div>
+</div>
+<div class="row_main_mobile" *ngIf="isMobile">
+    <h5 class="font-weight-normal" style="margin-bottom: 0.5rem;">Share</h5>
+    <div class="row" style="padding-left: 15px;">
+        <a target="_blank" class="twitter-share-button" [href]="getTweet()">
+            <span style="color: #1da1f2; padding-left: 1%;"><fa-icon [icon]="faTwitter" size="2x"></fa-icon></span>
+        </a>
+        <div style="padding-left: 5px;" class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button_count" data-size="small"><a target="_blank" [href]="getFB()" class="fb-xfbml-parse-ignore">
+            <span style="color: #1e6ace; padding-left: 1%;"><fa-icon [icon]="faFacebookSquare" size="2x"></fa-icon></span>
+        </a></div>
+    </div>
+</div>
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v10.0" nonce="h5ZafYMz"></script>
+
+<div class="row_main_2 description" *ngIf="!isMobile">
+    <span *ngIf="isCast"><h2 style="padding-top: 4%;">Full Cast and Crew</h2></span>
+    <div class="scrolling-wrapper">
+        <span *ngFor="let c of cast.results">
+            <div class="card">
+
+                <ng-template #content let-modal>
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modal-basic-title">{{castDetails.name}}</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-sm-3">
+                            <span *ngIf="c.profile_path">
+                                <img [src]="'https://image.tmdb.org/t/p/w500'+ c.profile_path">
+                            </span>
+                        </div>
+                        <div class="col-sm-9 modal-body-text">
+                            <span *ngIf="castDetails.birthday">
+                                Birth: {{castDetails.birthday}}
+                            </span>
+                            <span *ngIf="castDetails.place_of_birth">
+                                <br>Birth Place: {{castDetails.place_of_birth}}
+                            </span>
+                            <span *ngIf="castDetails.gender">
+                                <br>Gender: {{castDetails.gender}}
+                            </span>
+                            <span *ngIf="castDetails.homepage">
+                                <br>Website: <a [href]="castDetails.homepage" target="_blank">{{castDetails.homepage}}</a>
+                            </span>
+                            <span *ngIf="castDetails.known_for_department">
+                                <br>Known for: {{castDetails.known_for_department}}
+                            </span>
+                            <span *ngIf="castDetails.also_known_as">
+                                <br>Also Known as: {{castDetails.also_known_as}}
+                            </span>
+                            <br>
+                            <div style="margin-top: 5%;">
+                                <span style="color: #edc44a" *ngIf="castExternals.imdb_id">
+                                    <a ngbPopover="Visit IMDB" triggers="mouseenter:mouseleave" [href] = "'https://imdb.com/name/' +  castExternals.imdb_id" target="_blank" style="color: inherit;">
+                                        <fa-icon [icon]="faImdb" size="2x"></fa-icon>
+                                    </a>
+                                </span>
+                                <span style="color: #a8228b; padding-left: 1%;" *ngIf="castExternals.instagram_id">
+                                    <a ngbPopover="Visit Instagram" triggers="mouseenter:mouseleave" [href] = "'https://instagram.com/' + castExternals.instagram_id" target="_blank" style="color: inherit;">
+                                        <fa-icon [icon]="faInstagram" size="2x"></fa-icon>
+                                    </a>
+                                </span>
+                                <span style="color: #115dc0; padding-left: 1%;" *ngIf="castExternals.facebook_id">
+                                    <a ngbPopover="Visit Facebook" triggers="mouseenter:mouseleave" [href] = "'https://facebook.com/' + castExternals.facebook_id" target="_blank" style="color: inherit;">
+                                        <fa-icon [icon]="faFacebookSquare" size="2x"></fa-icon>
+                                    </a>
+                                    </span>
+                                <span style="color: #1da1f2; padding-left: 1%;" *ngIf="castExternals.twitter_id">
+                                    <a ngbPopover="Visit Twitter" triggers="mouseenter:mouseleave" [href] = "'https://twitter.com/' + castExternals.twitter_id" target="_blank" style="color: inherit;">
+                                        <fa-icon [icon]="faTwitter" size="2x"></fa-icon>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                      </div>
+                      <div *ngIf="castDetails.biography">
+                        <h4 class="description" style="margin-top: 2%;">Biography</h4>
+                        <span class="modal-body-text">{{castDetails.biography}}</span>
+                      </div>
+                    </div>
+                </ng-template>
+
+                <a (click)="open(content, c.id)">
+                    <span *ngIf="c.profile_path">
+                        <img [src]="'https://image.tmdb.org/t/p/w500'+ c.profile_path">
+                    </span>
+                    <div class="card-body">
+                        <span class="font-weight-bold">{{c.name}}</span>
+                        <span *ngIf="c.character">
+                            <span class="font-weight-bold"><br>AS<br></span>
+                            <span class="font-weight-light" style="font-size: 12px;">{{c.character}}</span>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </span>
+    </div>
+</div>
+<div class="row_main_mobile" *ngIf="isMobile">
+    <span *ngIf="isCast"><h2 style="padding-top: 4%;">Full Cast and Crew</h2></span>
+    <div class="scrolling-wrapper">
+        <span class="card-mobile" *ngFor="let c of cast.results">
+            <div class="card">
+
+                <ng-template #content let-modal>
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="modal-basic-title">{{castDetails.name}}</h4>
+                      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <span *ngIf="c.profile_path">
+                                <img [src]="'https://image.tmdb.org/t/p/w500'+ c.profile_path">
+                            </span>
+                        </div>
+                        <div class="modal-body-text">
+                            <span *ngIf="castDetails.birthday">
+                                Birth: {{castDetails.birthday}}
+                            </span>
+                            <span *ngIf="castDetails.place_of_birth">
+                                <br>Birth Place: {{castDetails.place_of_birth}}
+                            </span>
+                            <span *ngIf="castDetails.gender">
+                                <br>Gender: {{castDetails.gender}}
+                            </span>
+                            <span *ngIf="castDetails.homepage">
+                                <br>Website: <a [href]="castDetails.homepage" target="_blank">{{castDetails.homepage}}</a>
+                            </span>
+                            <span *ngIf="castDetails.known_for_department">
+                                <br>Known for: {{castDetails.known_for_department}}
+                            </span>
+                            <span *ngIf="castDetails.also_known_as">
+                                <br>Also Known as: {{castDetails.also_known_as}}
+                            </span>
+                            <br>
+                            <div style="margin-top: 5%;">
+                                <span style="color: #edc44a" *ngIf="castExternals.imdb_id">
+                                    <a ngbPopover="Visit IMDB" triggers="mouseenter:mouseleave" [href] = "'https://imdb.com/name/' +  castExternals.imdb_id" target="_blank" style="color: inherit;">
+                                        <fa-icon [icon]="faImdb" size="2x"></fa-icon>
+                                    </a>
+                                </span>
+                                <span style="color: #a8228b; padding-left: 1%;" *ngIf="castExternals.instagram_id">
+                                    <a ngbPopover="Visit Instagram" triggers="mouseenter:mouseleave" [href] = "'https://instagram.com/' + castExternals.instagram_id" target="_blank" style="color: inherit;">
+                                        <fa-icon [icon]="faInstagram" size="2x"></fa-icon>
+                                    </a>
+                                </span>
+                                <span style="color: #115dc0; padding-left: 1%;" *ngIf="castExternals.facebook_id">
+                                    <a ngbPopover="Visit Facebook" triggers="mouseenter:mouseleave" [href] = "'https://facebook.com/' + castExternals.facebook_id" target="_blank" style="color: inherit;">
+                                        <fa-icon [icon]="faFacebookSquare" size="2x"></fa-icon>
+                                    </a>
+                                    </span>
+                                <span style="color: #1da1f2; padding-left: 1%;" *ngIf="castExternals.twitter_id">
+                                    <a ngbPopover="Visit Twitter" triggers="mouseenter:mouseleave" [href] = "'https://twitter.com/' + castExternals.twitter_id" target="_blank" style="color: inherit;">
+                                        <fa-icon [icon]="faTwitter" size="2x"></fa-icon>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                      <div *ngIf="castDetails.biography">
+                        <h4 class="description" style="margin-top: 2%;">Biography</h4>
+                        <span class="modal-body-text">{{castDetails.biography}}</span>
+                      </div>
+                    </div>
+                </ng-template>
+
+                <a (click)="open(content, c.id)">
+                    <span *ngIf="c.profile_path">
+                        <img [src]="'https://image.tmdb.org/t/p/w500'+ c.profile_path">
+                    </span>
+                    <div class="card-body">
+                        <span class="font-weight-bold">{{c.name}}</span>
+                        <span *ngIf="c.character">
+                            <span class="font-weight-bold"><br>AS<br></span>
+                            <span class="font-weight-light" style="font-size: 12px;">{{c.character}}</span>
+                        </span>
+                    </div>
+                </a>
+            </div>
+        </span>
+    </div>
+</div>
+
+
+<div class="row row_main_2 description" *ngIf="!isMobile">
+    <div *ngIf="isReview">
+        <h2 style="padding-top: 2%;">Reviews &nbsp; <span style="color: rgb(123, 127, 139);">{{reviews.results.length}}</span></h2>
+        <div *ngFor="let r of reviews.results">
+            <div class="review-card row">
+                <div class="col-sm-2">
+                    <img [src]="r.avatar_path">
+                </div>
+                <div class="col-sm-10">
+                    <div *ngIf="r.author">
+                        <h5>A review created by {{r.author}} &nbsp; <span class="rating font-weight-light"><span style="font-size: 18px;">&#9733;</span> {{r.rating}}</span></h5>
+                        <p class="subtext">Written by {{r.author}} on {{ r.created_at | date:'MMMM d, y, h:mm:ss a':'GMT-7' }} </p>
+                        <p class="review_content font-weight-light">{{r.content}}</p>
+                        <a [href]="r.url" target="_blank">Read the rest</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row_main_mobile" *ngIf="isMobile">
+    <div *ngIf="isReview">
+        <h2 style="padding-top: 2%;">Reviews &nbsp; <span style="color: rgb(123, 127, 139);">{{reviews.results.length}}</span></h2>
+        <div *ngFor="let r of reviews.results">
+            <div class="review-card-mobile">
+                <div>
+                    <img [src]="r.avatar_path">
+                </div>
+                <div style="padding-top: 5%;">
+                    <div *ngIf="r.author">
+                        <h5>A review created by {{r.author}}</h5>
+                        <h5><span class="rating rating-mobile font-weight-light"><span style="font-size: 18px;">&#9733;</span> {{r.rating}}</span></h5>
+                        <p class="subtext" style="padding-top: 5%;">Written by {{r.author}} on {{ r.created_at | date:'MMMM d, y, h:mm:ss a':'GMT-7' }} </p>
+                        <p class="review_content font-weight-light">{{r.content}}</p>
+                        <a [href]="r.url" target="_blank">Read the rest</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="carousel_sizing" *ngIf="!isMobile">
+    <div *ngIf="isRecommended">
+        <div>
+            <app-carousel-deck-pause deckType="recommended" [mediaType]="mediaType" [id]="id"></app-carousel-deck-pause>
+        </div>
+    </div>
+</div>
+<div class="row_main_mobile" *ngIf="isMobile" style="margin-top: 5%;">
+    <div *ngIf="isRecommended">
+        <div>
+            <app-carousel-deck-pause deckType="recommended" [mediaType]="mediaType" [id]="id"></app-carousel-deck-pause>
+        </div>
+    </div>
+</div>
+<div class="carousel_sizing" *ngIf="!isMobile" style="margin-bottom: 5%; margin-top: 5%;">
+    <div *ngIf="isSimilar">
+        <div>
+            <app-carousel-deck-pause deckType="similar" [mediaType]="mediaType" [id]="id"></app-carousel-deck-pause>
+        </div>
+    </div>
+</div>
+<div class="row_main_mobile" *ngIf="isMobile" style="margin-bottom: 5%;">
+    <div *ngIf="isSimilar">
+        <div>
+            <app-carousel-deck-pause deckType="similar" [mediaType]="mediaType" [id]="id"></app-carousel-deck-pause>
+        </div>
+    </div>
+</div>

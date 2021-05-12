@@ -1,0 +1,10 @@
+<ng-template #rt let-r="result" let-t="term">
+    <span *ngIf="r['backdrop_path']">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + r['backdrop_path']" class="mr-1" style="width: 64px">
+    </span>
+    <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+</ng-template>
+
+<input id="typeahead-basic" type="text" name="MovieAndTV" class="form-control" [(ngModel)]="model" 
+[ngbTypeahead]="search" [resultFormatter]="resultFormatBandListValue" [inputFormatter]="inputFormatBandListValue" 
+placeholder="Search" (selectItem)="itemSelected($event)" [resultTemplate]="rt">

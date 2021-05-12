@@ -1,0 +1,185 @@
+.row_main {
+    margin-left: 14%;
+    margin-right: 14%;
+    color: white;
+}
+
+.row_main_mobile {
+    margin-left: 7%;
+    margin-right: 7%;
+    color: white;
+}
+
+.row_main_2 {
+    margin-left: 13%;
+    margin-right: 13%;
+    color: white;
+}
+
+.row_main_2 .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.carousel_sizing {
+    margin-top: 2%;
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+.description {
+    margin-top: 1%;
+}
+
+.card-body {
+    /* width: 17%;
+    margin-right: 5px; */
+    color: black;
+    padding-left: 0;
+    padding-right: 0;
+    text-align: center;
+    width: 100%;
+    font-size: 12px;
+    padding-top: 7px;
+    padding-bottom: 15px;
+}
+
+.card {
+    margin-right: 1%;
+    width: 16%;
+    white-space: normal;
+    margin-bottom: 1%;
+    border-radius: 15px;
+    border-width: 0;
+}
+
+.card-mobile .card {
+    margin-right: 10%;
+    width: 46%;
+}
+
+.card img {
+    width: 100%;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.card a {
+    cursor: pointer;
+}
+
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-color: white;
+}
+
+.scrolling-wrapper .card {
+    display: inline-block;
+    vertical-align:top;
+}
+
+.modal-body img {
+    width: 100%;
+}
+
+.modal-body-text {
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+}
+
+.review-card {
+    background-color: white;
+    color: black;
+    margin-bottom: 2%;
+    border-radius: 10px;
+    padding: 2%;
+}
+
+.review-card-mobile {
+    background-color: white;
+    color: black;
+    margin-bottom: 6%;
+    border-radius: 10px;
+    padding: 7%;
+}
+
+.review-card img {
+    width: 60%;
+    border-radius: 50%;
+}
+
+.review-card-mobile img {
+    width: 25%;
+    border-radius: 50%;
+    margin-left: 10%;
+}
+
+.review-card p, a {
+    font-size: 12px;
+}
+
+.review-card-mobile p, a {
+    font-size: 12px;
+}
+
+.review-card a {
+    text-decoration: underline;
+}
+
+.review-card-mobile a {
+    text-decoration: underline;
+}
+
+.review_content {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 3; /* number of lines to show */
+	-webkit-box-orient: vertical;
+}
+
+.rating {
+    /* border-top-left-radius: 40%;
+    border-bottom-left-radius: 40%;
+    border-top-right-radius: 40%;
+    border-bottom-right-radius: 40%; */
+    border-radius: 1000px;
+    background-color: black;
+    padding: 1%;
+    font-size: 12px;
+    color: white;
+}
+
+.rating-mobile {
+    padding: 2%;
+}
+
+.car_head {
+    margin-left: 9%;
+    color: white;
+    padding-top: 2%;
+    padding-bottom: 1%;
+}
+
+h1 {
+    font-size: 40px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.subtext {
+    color: rgb(187, 187, 187);
+}
+
+h2 {
+    color: white;
+    padding-bottom: 1%;
+}
+
+h5 {
+    margin-bottom: 5%;
+}

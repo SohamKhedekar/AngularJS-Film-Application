@@ -1,0 +1,15 @@
+<ngb-carousel class="carousel_style" #carousel [showNavigationIndicators]="!isMobile" [interval]="5000" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus" (slide)="onSlide($event)">
+    <ng-template ngbSlide *ngFor="let item of currentlyPlayingMovies.results; index as i">
+        <div class="clip">
+            <a [href]="itemSelected(item)">
+                <div class="picsum-img-wrapper">
+                    <img [src]="'https://image.tmdb.org/t/p/original' + item.backdrop_path" alt="My image {{i + 1}} description">
+                </div>
+                <div *ngIf="item.title">
+                    <div class="overlay" *ngIf="!isMobile">{{item.title}}</div>
+                    <div class="overlay-mobile" *ngIf="isMobile"><div class="overlay">{{item.title}}</div></div>
+                </div>
+            </a>
+        </div>
+    </ng-template>
+</ngb-carousel>
